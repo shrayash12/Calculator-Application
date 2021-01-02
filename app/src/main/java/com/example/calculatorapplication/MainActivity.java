@@ -1,11 +1,16 @@
 package com.example.calculatorapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -14,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     Double firstValueWithOperator;
     Double secondValueWithOperator;
+    private HistoryViewModel historyViewModel;
 
 
     Operator operator;
@@ -23,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        historyViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(HistoryViewModel.class);
+
 
         Button buttonOne = findViewById(R.id.buttonOne);
 
@@ -39,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
         Button buttonEight = findViewById(R.id.buttonEight);
         Button buttonNine = findViewById(R.id.buttonNine);
         Button buttonZero = findViewById(R.id.buttonZero);
-
-
+        Button buttonDecimalPoint = findViewById(R.id.buttonDecimalPoint);
+        Button   buttonDelete = findViewById(R.id.buttonDelete);
+        ImageView imageView = findViewById(R.id.historyMenu_ic);
         final EditText editText = findViewById(R.id.editText);
 
         final TextView textView = findViewById(R.id.tvTextView);
@@ -61,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 editText.setText(editText.getText().toString() + "1");
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -119,6 +136,12 @@ public class MainActivity extends AppCompatActivity {
                 editText.setText(editText.getText().toString() + "0");
             }
         });
+        buttonDecimalPoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString()+".");
+            }
+        });
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,6 +201,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s = editText.getText().toString();
+                s = s.substring(0, s.length() - 1);
+                editText.setText(s);            }
+        });
 
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,13 +218,13 @@ public class MainActivity extends AppCompatActivity {
                     double ans = firstValueWithOperator + secondValueWithOperator;
                     textView.setText("");
                     editText.setText("");
-                    textView.setText(decimalFormat.format(firstValueWithOperator) + "+"
+                    textView.setText(decimalFormat.format(firstValueWithOperator) + " + "
                             + decimalFormat.format(secondValueWithOperator) + " = " + decimalFormat.format(ans));
                 } else if (operator.equals(Operator.SUBTRACT)) {
                     double ans = firstValueWithOperator - secondValueWithOperator;
                     textView.setText("");
                     editText.setText("");
-                    textView.setText(decimalFormat.format(firstValueWithOperator) + "+"
+                    textView.setText(decimalFormat.format(firstValueWithOperator) + " - "
                             + decimalFormat.format(secondValueWithOperator) + " = " + decimalFormat.format(ans));
                 } else if (operator.equals(Operator.MULTI)) {
                     StringBuilder stringBuilder = new StringBuilder();
@@ -231,6 +262,8 @@ public class MainActivity extends AppCompatActivity {
                     stringBuilder.append(decimalFormat.format(ans));
                     textView.setText(stringBuilder.toString());
                 }
+                historyViewModel.insert(new History(textView.getText().toString()));
+
             }
         });
     }
