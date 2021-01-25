@@ -22,7 +22,6 @@ public abstract class HistoryRoomDataBase extends RoomDatabase {
 
 
     static HistoryRoomDataBase getDatabase(final Context context) {
-        if (historyRoomDataBase == null) {
             synchronized (HistoryRoomDataBase.class) {
                 if (historyRoomDataBase == null) {
                     historyRoomDataBase = Room.databaseBuilder(context.getApplicationContext(),
@@ -30,7 +29,7 @@ public abstract class HistoryRoomDataBase extends RoomDatabase {
                             .build();
                 }
             }
-        }
+
         return historyRoomDataBase;
     }
 }

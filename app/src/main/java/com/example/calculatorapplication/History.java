@@ -12,13 +12,16 @@ public class History {
     @NonNull
     @ColumnInfo(name = "History")
     public String histories;
-    public History(){
+
+    public History() {
 
     }
-    public History(@NonNull String history){
+
+    public History(@NonNull String history) {
         this.histories = history;
     }
-    public String getHistores(){
-    return  this.histories;
+
+    public String getHistores() {
+        return this.histories;
     }
 }

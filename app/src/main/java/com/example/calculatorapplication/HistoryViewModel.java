@@ -15,11 +15,10 @@ public class HistoryViewModel extends AndroidViewModel {
     public HistoryViewModel(@NonNull Application application) {
         super(application);
         historyRepository = new HistoryRepository(application);
-        allHistories = historyRepository.getAllHistories();
     }
 
     LiveData<List<History>> getAllWords() {
-        return allHistories;
+        return  historyRepository.getAllHistories() ;
     }
 
     public void insert(History history) {
