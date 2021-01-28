@@ -23,21 +23,27 @@
         tools:text="Answer"
         android:layout_below="@+id/historyMenu_ic"
         android:layout_marginTop="30dp"/>
+    <EditText
+        android:id="@+id/editText_2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/tvTextView"
+        tools:text="Editor_2" />
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText_1"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/tvTextView"
-        tools:text="Editor" />
+        android:layout_height="150dp"
+        android:layout_below="@+id/editText_2"
+        tools:text="Editor_1" />
 
 
     <LinearLayout
         android:id="@+id/firstLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/editText_1"
         android:gravity="center_horizontal"
         android:layout_marginTop="5dp">
 

@@ -49,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
         Button buttonNine = findViewById(R.id.buttonNine);
         Button buttonZero = findViewById(R.id.buttonZero);
         Button buttonDecimalPoint = findViewById(R.id.buttonDecimalPoint);
-        Button   buttonDelete = findViewById(R.id.buttonDelete);
+        Button buttonDelete = findViewById(R.id.buttonDelete);
         ImageView imageView = findViewById(R.id.historyMenu_ic);
-        final EditText editText = findViewById(R.id.editText);
+        final EditText editText_1 = findViewById(R.id.editText_1);
+        final EditText editText_2 = findViewById(R.id.editText_2);
 
         final TextView textView = findViewById(R.id.tvTextView);
 
@@ -70,13 +71,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                editText.setText(editText.getText().toString() + "1");
+                editText_1.setText(editText_1.getText().toString() + "1");
             }
         });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,61 +86,61 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                editText.setText(editText.getText().toString() + "2");
+                editText_1.setText(editText_1.getText().toString() + "2");
             }
         });
         buttonThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString() + "3");
+                editText_1.setText(editText_1.getText().toString() + "3");
             }
         });
         buttonFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString() + "4");
+                editText_1.setText(editText_1.getText().toString() + "4");
             }
         });
         buttonFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString() + "5");
+                editText_1.setText(editText_1.getText().toString() + "5");
             }
         });
         buttonSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString() + "6");
+                editText_1.setText(editText_1.getText().toString() + "6");
             }
         });
         buttonSeven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString() + "7");
+                editText_1.setText(editText_1.getText().toString() + "7");
             }
         });
         buttonEight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString() + "8");
+                editText_1.setText(editText_1.getText().toString() + "8");
             }
         });
         buttonNine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString() + "9");
+                editText_1.setText(editText_1.getText().toString() + "9");
             }
         });
         buttonZero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString() + "0");
+                editText_1.setText(editText_1.getText().toString() + "0");
             }
         });
         buttonDecimalPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText().toString()+".");
+                editText_1.setText(editText_1.getText().toString() + ".");
             }
         });
 
@@ -147,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operator = Operator.ADD;
-                firstValueWithOperator = Double.parseDouble(editText.getText().toString());
-                textView.setText(decimalFormat.format(firstValueWithOperator) + " + ");
-                editText.setText("");
+                firstValueWithOperator = Double.parseDouble(editText_1.getText().toString());
+                editText_2.setText(decimalFormat.format(firstValueWithOperator) + " + ");
+                editText_1.setText("");
             }
         });
 
@@ -157,9 +158,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operator = Operator.SUBTRACT;
-                firstValueWithOperator = Double.parseDouble(editText.getText().toString());
-                textView.setText(decimalFormat.format(firstValueWithOperator) + " - ");
-                editText.setText("");
+                firstValueWithOperator = Double.parseDouble(editText_1.getText().toString());
+                editText_2.setText(decimalFormat.format(firstValueWithOperator) + " - ");
+                editText_1.setText("");
             }
         });
 
@@ -167,18 +168,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operator = operator.MULTI;
-                firstValueWithOperator = Double.parseDouble(editText.getText().toString());
-                textView.setText(decimalFormat.format(firstValueWithOperator) + " * ");
-                editText.setText("");
+                firstValueWithOperator = Double.parseDouble(editText_1.getText().toString());
+                editText_2.setText(decimalFormat.format(firstValueWithOperator) + " * ");
+                editText_1.setText("");
             }
         });
         buttonDevide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 operator = operator.DEVIDE;
-                firstValueWithOperator = Double.parseDouble(editText.getText().toString());
-                textView.setText(decimalFormat.format(firstValueWithOperator) + "/");
-                editText.setText("");
+                firstValueWithOperator = Double.parseDouble(editText_1.getText().toString());
+                editText_2.setText(decimalFormat.format(firstValueWithOperator) + "/");
+                editText_1.setText("");
 
             }
         });
@@ -186,9 +187,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 operator = operator.MODULO;
-                firstValueWithOperator = Double.parseDouble(editText.getText().toString());
-                textView.setText(decimalFormat.format(firstValueWithOperator) + "%");
-                editText.setText("");
+                firstValueWithOperator = Double.parseDouble(editText_1.getText().toString());
+                editText_2.setText(decimalFormat.format(firstValueWithOperator) + "%");
+                editText_1.setText("");
 
             }
         });
@@ -196,71 +197,72 @@ public class MainActivity extends AppCompatActivity {
         buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText("");
-                editText.setText("");
+                editText_2.setText("");
+                editText_1.setText("");
             }
         });
 
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s = editText.getText().toString();
+                String s = editText_1.getText().toString();
                 s = s.substring(0, s.length() - 1);
-                editText.setText(s);            }
+                editText_1.setText(s);
+            }
         });
 
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                secondValueWithOperator = Double.parseDouble(editText.getText().toString());
+                secondValueWithOperator = Double.parseDouble(editText_1.getText().toString());
 
                 if (operator.equals(Operator.ADD)) {
                     double ans = firstValueWithOperator + secondValueWithOperator;
-                    textView.setText("");
-                    editText.setText("");
-                    textView.setText(decimalFormat.format(firstValueWithOperator) + " + "
+                    editText_2.setText("");
+                    editText_1.setText("");
+                    editText_2.setText(decimalFormat.format(firstValueWithOperator) + " + "
                             + decimalFormat.format(secondValueWithOperator) + " = " + decimalFormat.format(ans));
                 } else if (operator.equals(Operator.SUBTRACT)) {
                     double ans = firstValueWithOperator - secondValueWithOperator;
-                    textView.setText("");
-                    editText.setText("");
-                    textView.setText(decimalFormat.format(firstValueWithOperator) + " - "
+                    editText_2.setText("");
+                    editText_1.setText("");
+                    editText_2.setText(decimalFormat.format(firstValueWithOperator) + " - "
                             + decimalFormat.format(secondValueWithOperator) + " = " + decimalFormat.format(ans));
                 } else if (operator.equals(Operator.MULTI)) {
                     StringBuilder stringBuilder = new StringBuilder();
                     double ans = firstValueWithOperator * secondValueWithOperator;
-                    textView.setText("");
-                    editText.setText("");
+                    editText_2.setText("");
+                    editText_1.setText("");
                     stringBuilder.append(decimalFormat.format(firstValueWithOperator));
                     stringBuilder.append(" * ");
                     stringBuilder.append(decimalFormat.format(secondValueWithOperator));
                     stringBuilder.append(" = ");
                     stringBuilder.append(decimalFormat.format(ans));
 
-                    textView.setText(stringBuilder.toString());
+                    editText_2.setText(stringBuilder.toString());
 
                 } else if (operator.equals(operator.DEVIDE)) {
                     StringBuilder stringBuilder = new StringBuilder();
                     double ans = firstValueWithOperator / secondValueWithOperator;
-                    textView.setText("");
-                    editText.setText("");
+                    editText_2.setText("");
+                    editText_1.setText("");
                     stringBuilder.append(decimalFormat.format(firstValueWithOperator));
                     stringBuilder.append(" / ");
                     stringBuilder.append(decimalFormat.format(secondValueWithOperator));
                     stringBuilder.append(" = ");
                     stringBuilder.append(decimalFormat.format(ans));
-                    textView.setText(stringBuilder.toString());
+                    editText_2.setText(stringBuilder.toString());
                 } else if (operator.equals(operator.MODULO)) {
                     StringBuilder stringBuilder = new StringBuilder();
                     double ans = firstValueWithOperator % secondValueWithOperator;
-                    textView.setText("");
-                    editText.setText("");
+                    editText_2.setText("");
+                    editText_1.setText("");
                     stringBuilder.append(decimalFormat.format(firstValueWithOperator));
                     stringBuilder.append(" % ");
                     stringBuilder.append(decimalFormat.format(secondValueWithOperator));
                     stringBuilder.append(" = ");
                     stringBuilder.append(decimalFormat.format(ans));
-                    textView.setText(stringBuilder.toString());
+                    editText_2.setText(stringBuilder.toString());
                 }
                 historyViewModel.insert(new History(textView.getText().toString()));
 
