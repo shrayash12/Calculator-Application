@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                     stringBuilder.append(decimalFormat.format(ans));
                     editText_2.setText(stringBuilder.toString());
                 }
-                historyViewModel.insert(new History(textView.getText().toString()));
+                historyViewModel.insert(new History(editText_2.getText().toString()));
 
             }
         });
